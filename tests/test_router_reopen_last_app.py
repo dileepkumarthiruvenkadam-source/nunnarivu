@@ -1,0 +1,6 @@
+from __future__ import annotations
+
+LAST_OPENED_APP: str | None = None
+
+def remember_opened_app(path: str) -> None: ...
+def reopen_last_app() -> str: ...

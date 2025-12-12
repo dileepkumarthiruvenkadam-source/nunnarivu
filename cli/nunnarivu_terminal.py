@@ -1,46 +1,42 @@
-import os
 import sys
-
-# Add project root to sys.path so "backend" package can be imported
-PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-if PROJECT_ROOT not in sys.path:
-    sys.path.insert(0, PROJECT_ROOT)
-
-from backend.router import route_message, execute_action
-from backend.tts import speak  # Sunny's voice
-
+import time
+from backend.router import route_message
+# from backend.router import execute_action   # ❌ old import (commented, not deleted)
 
 def main():
-    print("☀️ Sunny (AI assistant) – type 'exit' to quit.\n")
+    print("🟢 Nunnarivu Terminal — Sunny Ready")
+    print("Type your message. Type 'exit' to quit.\n")
 
     while True:
-        try:
-            user = input("You: ")
-        except (EOFError, KeyboardInterrupt):
-            print("\nSunny: Bye! 👋")
-            speak("Bye! Talk to you later.")
-            break
+        user_input = input("You: ").strip()
+        if user_input.lower() == "exit":
+            print("Goodbye!")
+            sys.exit(0)
 
-        if user.strip().lower() in {"exit", "quit"}:
-            print("Sunny: Bye! 👋")
-            speak("Bye! Talk to you later.")
-            break
+        # Route the text to the router (LLM + action detection)
+            # Measure reaction time
+        start_time = time.time()
+        sunny_reply = route_message(user_input)
+        end_time = time.time()
+        reaction = end_time - start_time
 
-        # Ask router what to do
-        result = route_message(user)
 
-        action = result.get("action", "none")
-        args = result.get("args", {})
-        assistant_reply = result.get("assistant_reply", "")
+        # If router was returning an action dict earlier, we used:
+        # execute_action(action)
+        # Removed but NOT deleted
+        #
+        # Example of old logic:
+        # action = route_message(user_input)
+        # if action:
+        #     execute_action(action)
 
-        # Perform macOS action if needed
-        if action != "none":
-            execute_action(action, args)
+        if isinstance(sunny_reply, dict):
+            text = sunny_reply.get("assistant_reply", str(sunny_reply))
+        else:
+            text = str(sunny_reply)
 
-        # Show and speak Sunny's reply
-        print(f"\nSunny: {assistant_reply}\n")
-        speak(assistant_reply)
-
+        print(f"Sunny: {text}")
+        print(f"⏱ Reaction time: {reaction:.2f} seconds")
 
 if __name__ == "__main__":
     main()

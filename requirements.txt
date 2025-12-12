@@ -1,0 +1,7 @@
+sounddevice~=0.5.3
+numpy~=2.0.2
+openwakeword~=0.6.0
+requests~=2.32.5
+beautifulsoup4~=4.14.3
+python-docx~=1.2.0
+vosk~=0.3.44

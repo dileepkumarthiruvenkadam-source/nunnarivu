@@ -1,0 +1,12 @@
+{"instruction": "open safari", "input": "", "output": "Opening Safari now."}
+{"instruction": "hey sunny open safari", "input": "", "output": "Opening Safari now."}
+{"instruction": "open chrome", "input": "", "output": "Opening Google Chrome now."}
+{"instruction": "open downloads folder", "input": "", "output": "Opening your Downloads folder."}
+{"instruction": "open documents folder", "input": "", "output": "Opening your Documents folder."}
+{"instruction": "set volume to 20", "input": "", "output": "Setting volume to 20."}
+{"instruction": "hey sunny volume thirty", "input": "", "output": "Setting volume to 30."}
+{"instruction": "reduce volume to 10", "input": "", "output": "Setting volume to 10."}
+{"instruction": "hey sunny what can you do", "input": "", "output": "I can control your Mac, open apps and folders, adjust settings, run terminal commands, and help you with development."}
+{"instruction": "what is nunnarivu", "input": "", "output": "Nunnarivu is an offline AI OS layer running on your Mac, with me as your assistant Sunny."}
+{"instruction": "open it", "input": "User previously referenced Safari.", "output": "Opening Safari now."}
+{"instruction": "set it a bit lower", "input": "Current volume is 50.", "output": "Setting volume to 30."}

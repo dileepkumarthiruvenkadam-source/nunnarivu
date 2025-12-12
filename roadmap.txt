@@ -1,0 +1,204 @@
+Here is the realistic and optimized roadmap for you to build everything solo until an investor-ready demo, with 8 hours/day of focused work.
+
+This plan assumes:
+	•	You have me assisting you on every technical step
+	•	You do all implementation yourself
+	•	Goal: AI hardware + OS-layer demo (the Nunnarivu concept)
+	•	Demo means:
+✔ A small accelerator on FPGA
+✔ A basic Linux driver
+✔ A working AI OS layer prototype
+✔ A simple app automation “agent”
+
+You DO NOT need ASIC or a full GPU for an investor demo.
+
+⸻
+
+⭐ NUNNARIVU SOLO ROADMAP — 120 DAYS (4 MONTHS TOTAL)
+
+(8 hours/day, with me as your technical mentor)
+
+⸻
+
+📍 PHASE 1 — Fundamentals + Toolchain Setup (Days 1–14)
+
+Goal: Become competent in hardware + OS foundations
+
+What you will do:
+	•	Learn Verilog basics
+	•	Install Verilog tools (Icarus/Verilator + GTKWave)
+	•	Learn FPGA basics
+	•	Learn Linux kernel module basics
+	•	Setup your dev environment + GitHub
+
+Daily Output:
+	•	LED blink on simulated FPGA
+	•	First “Hello kernel driver” in Linux
+
+🔋 End of Phase Deliverable:
+Your machine can simulate hardware + run kernel modules.
+
+⸻
+
+📍 PHASE 2 — Build Your First Compute Tile (Days 15–35)
+
+Goal: Make a working MAC “accelerator block”
+
+You will build:
+	•	16-bit MAC unit
+	•	Vectorized MAC unit
+	•	Pipelined version
+	•	Testbenches
+	•	Waveform verification
+	•	FPGA synthesis
+
+What you learn:
+	•	Parallel compute
+	•	Pipelining
+	•	RTL debugging
+	•	How a GPU core is built at smallest level
+
+🔋 End of Phase Deliverable:
+Working accelerator tile running on FPGA simulation.
+
+⸻
+
+📍 PHASE 3 — FPGA Hardware Bring-Up (Days 36–55)
+
+Goal: Run your compute tile on actual hardware
+
+You will:
+	•	Buy FPGA dev board (€100–€200)
+	•	Upload bitstream
+	•	Connect UART or USB
+	•	Feed data into your MAC unit
+	•	Receive output on PC
+	•	Verify hardware matches simulation
+
+Milestone:
+The MAC engine works physically on FPGA.
+
+🔋 End of Phase Deliverable:
+Your first working hardware accelerator.
+
+Investors LOVE this.
+
+⸻
+
+📍 PHASE 4 — Linux Driver + API (Days 56–75)
+
+Goal: Make the accelerator usable from OS
+
+You will create:
+	•	A Linux kernel module
+	•	A /dev/nunnarivu_acc0 device
+	•	IOCTL or write() calls
+	•	Memory-mapped I/O (fake or simple at first)
+	•	A C/Python library to call the driver
+
+This looks like:
+
+from nunnarivu import Accelerator
+acc = Accelerator()
+result = acc.mac_vector(A, B)
+
+🔋 End of Phase Deliverable:
+Real driver + API that lets software call your hardware.
+
+This is the INVESTOR DEMO CORE.
+
+⸻
+
+📍 PHASE 5 — “Nunnarivu OS Layer” Prototype (Days 76–95)
+
+Goal: Build the AI OS automation layer
+
+You will build:
+	•	A simple Python-based OS layer
+	•	A system control agent
+	•	App automation (MacOS Accessiblity API / pyobjc or AHK on Windows)
+	•	Natural-language interface
+	•	Integration with your hardware accelerator
+→ even if only used for small operations
+
+Example:
+
+User: “Open Notion and create a new page titled ‘AI Roadmap’.”
+Nunnarivu Layer: Automates it.
+
+🔋 End of Phase Deliverable:
+A working AI OS agent powered by your hardware tile.
+
+⸻
+
+📍 PHASE 6 — Full Demo Assembly (Days 96–110)
+
+Goal: Combine the hardware, driver, and OS layer
+
+Your demo will show:
+	1.	Hardware accelerator tile on FPGA
+	2.	OS layer agent controlling apps
+	3.	Requests going → driver → hardware tile
+	4.	Results used in real automation
+
+This is enough for:
+
+✔ AI accelerators
+✔ AI OS layer
+✔ A hardware-software co-design
+✔ Real pipeline
+✔ Working prototype
+
+(Congrats: you can now pitch real deep-tech investors.)
+
+⸻
+
+📍 PHASE 7 — Investor Pitch + Documentation (Days 111–120)
+
+You prepare:
+	•	10-slide pitch deck
+	•	Architecture diagram
+	•	Roadmap
+	•	Cost plan
+	•	Hiring plan
+	•	Market narrative
+	•	Demo video
+
+I help you write all of this.
+
+🔋 Final Deliverable:
+Investor-ready startup with working hardware + OS demo.
+
+⸻
+
+⭐ SUMMARY — SOLO TIMELINE (8 hours/day)
+
+Phase	Days	Outcome
+Fundamentals	1–14	tooling + basics
+Compute Tile	15–35	hardware block sim
+FPGA Bring-up	36–55	hardware works
+Linux Driver	56–75	OS interface
+Nunnarivu OS Layer	76–95	AI agent
+Assemble Demo	96–110	full working demo
+Pitch Prep	111–120	ready to raise funding
+
+
+⸻
+
+⭐ TOTAL TIME: 4 months
+
+You can demo to investors in 120 days working solo — with me guiding you.
+
+⸻
+
+If you want, I will now create:
+
+✔ Daily schedule (120 days)
+✔ Tools + hardware list (budget under €300)
+✔ Folder structure for the whole project
+✔ GitHub repo plan
+✔ Architecture diagrams
+
+Just tell me:
+
+👉 “Yes, make my full 120-day schedule.”

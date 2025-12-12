@@ -1,31 +1,52 @@
 import requests
 from typing import List, Dict
 
-OLLAMA_URL = "http://localhost:11434/api/chat"
-MODEL_NAME = "phi3:mini"
+# Talk to the server-side Ollama instance
+OLLAMA_URL = "http://10.2.51.11:11434/api/generate"
+MODEL_NAME = "phi3:latest"
+
+
+def _messages_to_prompt(messages: List[Dict[str, str]]) -> str:
+    """
+    Convert a chat-style messages list into a single prompt string
+    suitable for /api/generate.
+    """
+    parts = []
+    for m in messages:
+        role = m.get("role", "user")
+        content = m.get("content", "")
+
+        if role == "system":
+            parts.append(f"[System]\n{content}\n")
+        elif role == "assistant":
+            parts.append(f"[Assistant]\n{content}\n")
+        else:  # user or other
+            parts.append(f"[User]\n{content}\n")
+
+    # Encourage the model to respond as assistant
+    parts.append("[Assistant]\n")
+    return "\n".join(parts)
+
 
 def ask_llm(messages: List[Dict[str, str]]) -> str:
     """
-    Talk to the local Ollama model (phi3).
-
-    messages example:
-    [
-        {"role": "system", "content": "You are Sunny, an AI OS for macOS."},
-        {"role": "user", "content": "Hello!"}
-    ]
+    Talk to the server-side Ollama model (phi3) using /api/generate.
     """
+    prompt = _messages_to_prompt(messages)
+
     response = requests.post(
         OLLAMA_URL,
         json={
             "model": MODEL_NAME,
-            "messages": messages,
+            "prompt": prompt,
             "stream": False,
         },
         timeout=120,
     )
     response.raise_for_status()
     data = response.json()
-    return data["message"]["content"]
+    # For non-streaming, Ollama returns a single JSON object with "response"
+    return data.get("response", "").strip()
 
 
 if __name__ == "__main__":
